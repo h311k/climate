@@ -32,7 +32,7 @@ function getPrevisaoDoTempo(loader){
         }
         dia = dia+'/'+mes+'/'+ano+' '+hora+':00:00';
         tempHoje = data.data;
-        result = $.grep(data.data, function(e){ return e.date_br == dia; });
+        result = $.grep(data.data, function(e){ return e.date_br == dia;});
         tempAgora = result[0].temperature.temperature;
         $.getJSON('https://cors.io/?http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/'+idLocal+'/days/15?token=207dd08101b70c9a6a72b196757c9d98', function(data){
           var d = new Date();
@@ -43,8 +43,9 @@ function getPrevisaoDoTempo(loader){
           previsaoSemana = data.data;
           result = $.grep(data.data, function(e){ return e.date_br == dia; });
           previsaoHoje = result[0];
-          console.log(previsaoHoje);
+          //console.log(previsaoHoje);
           renderizaPrevisaoHoje();
+          renderizaPrevisaoHoras();
           $(loader).fadeOut('slow');
         });
       });
@@ -135,4 +136,36 @@ function renderizaPrevisaoHoje() {
 
   }
   $('#detalhe').text(previsaoHoje.text_icon.text.phrase.reduced);
+}
+
+function renderizaPrevisaoHoras() {
+  console.log(tempHoje[0]);
+  for(i=0;i<=24;i++) {
+      temperaturaHora = '<h4>'+tempHoje[hora].temperature.temperature+'°</h4>';
+      direcaoVentoHora = '<p class="direcao-vento" direcao='+tempHoje[hora].wind.directiondegrees+'>Direção do vento: '+tempHoje[hora].wind.directiondegrees+'</p>';
+      dataHora = '<p>'+tempHoje[hora].date_br+'</p>';
+      $('.owl-carousel').append('<div class="temperatura-hora shadow p-3 mb-5 bg-white rounded">'+temperaturaHora + direcaoVentoHora + dataHora+'</div>');
+      hora++;
+  }
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:false
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:false,
+            loop:false,
+            dots:true
+        }
+    }
+  });
 }

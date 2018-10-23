@@ -1,5 +1,6 @@
 body {
 	font-family: 'Slabo 27px', serif;
+	padding-top: 20px;
 }
 
 /* loader */
@@ -59,8 +60,6 @@ body {
 }
 .ceu-noite-limpo {
 	background-color: #191970;
-	color: #fffff0;
-	background-color: #4e4e4e;
 }
 
 /* Background dinamico */
@@ -72,4 +71,11 @@ body {
 }
 .chuva-pesada {
 	background-image: url('../img/background/chuva-pesada.svg');
+}
+
+/* Background das temperaturas por hora */
+.temperatura-hora, .temperatura-dia-detalhe {
+	background-color: #fffff0;
+	padding-left: 10px;
+	opacity: 0.8;
 }

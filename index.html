@@ -14,12 +14,15 @@
   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
   <!-- Arquivo de estilo -->
   <link rel="stylesheet" href="css/loading-bar.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/style.css">
   <!-- Arquivos JavaScript -->
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
   <script src="js/loading-bar.js"></script>
   <script src="js/climate.js"></script>
   <script src="js/custom.js"></script>
@@ -33,15 +36,18 @@
       <div class="hoje">
         <div class="row">
           <div class="col-md-6 d-flex justify-content-center">
-            <img id="imagem-clima" src="" alt=""/>
+            <img id="imagem-clima" class="img-fluid" src="" alt=""/>
           </div>
-          <div class="col-md-6">
+          <div class="temperatura-dia-detalhe col-md-6 shadow p-3 mb-5 bg-white rounded">
             <h3 id="cidade"></h3>
             <h2 id="temperatura-atual"></h2>
             <p id="sensacao-termica"></p>
             <h4 id="lide"></h4>
             <p id="detalhe"></p>
           </div>
+        </div>
+        <div class="horas">
+          <div class="owl-carousel"></div>
         </div>
       </div>
     </div>

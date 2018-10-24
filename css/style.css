@@ -1,6 +1,5 @@
 body {
 	font-family: 'Slabo 27px', serif;
-	padding-top: 20px;
 }
 
 /* loader */
@@ -45,6 +44,16 @@ body {
 }
 /* Fim  do loader */
 
+#principal {
+	height: 100vh;
+	padding-top: 20px;
+}
+/* Define o tamanho maximo da imagem principal */
+#imagem-clima {
+	max-width: 200px;
+	max-height: 200px;
+}
+
 /* Muda a cor do body de acordo com a hora do dia */
 .ceu-madrugada-limpo {
 	background-color: #4169E1;
@@ -57,6 +66,9 @@ body {
 }
 .ceu-fechado {
 	background-color: #808080;
+}
+.ceu-noite-fechado {
+	background-color: #190c26;
 }
 .ceu-noite-limpo {
 	background-color: #191970;
@@ -78,4 +90,10 @@ body {
 	background-color: #fffff0;
 	padding-left: 10px;
 	opacity: 0.8;
+}
+
+.compass{
+	max-width: 30px;
+	max-height: 30px;
+	float: right;
 }

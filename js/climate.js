@@ -46,6 +46,7 @@ function getPrevisaoDoTempo(loader){
           //console.log(previsaoHoje);
           renderizaPrevisaoHoje();
           renderizaPrevisaoHoras();
+          renderizaPrevisaoSemana();
           $(loader).fadeOut('slow');
         });
       });
@@ -142,11 +143,16 @@ function renderizaPrevisaoHoras() {
   console.log(tempHoje[0]);
   for(i=0;i<=24;i++) {
       temperaturaHora = '<h4>'+tempHoje[hora].temperature.temperature+'°</h4>';
-      direcaoVentoHora = '<p class="direcao-vento" direcao='+tempHoje[hora].wind.directiondegrees+'>Direção do vento: '+tempHoje[hora].wind.directiondegrees+'</p>';
-      dataHora = '<p>'+tempHoje[hora].date_br+'</p>';
-      $('.owl-carousel').append('<div class="temperatura-hora shadow p-3 mb-5 bg-white rounded">'+temperaturaHora + direcaoVentoHora + dataHora+'</div>');
+      iconeVento = '<img class="compass" src="img/icons/compass.svg" alt="'+tempHoje[hora].wind.directiondegrees+'deg"/>';
+      direcaoVentoHora = '<p class="direcao-vento" direcao='+tempHoje[hora].wind.directiondegrees+'>Vento: '+tempHoje[hora].wind.directiondegrees+'°'+iconeVento+'</p>';
+      precipitacao = '<p class="precipitacao">Precipitação: '+tempHoje[hora].rain.precipitation+'mm</p>';
+      dataHora = '<p>'+tempHoje[hora].date_br.replace(":00","")+'</p>';
+      $('.owl-carousel').append('<div class="temperatura-hora shadow p-3 mb-5 bg-white rounded">'+temperaturaHora + direcaoVentoHora + precipitacao + dataHora+'</div>');
       hora++;
   }
+  $('.compass').each(function(index, el) {
+    $(this).css('transform', 'rotate('+$(this).attr('alt')+')');
+  });
   $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
@@ -168,4 +174,18 @@ function renderizaPrevisaoHoras() {
         }
     }
   });
+}
+
+function renderizaPrevisaoSemana() {
+  var d = new Date();
+  var semana = new Array(7);
+  semana[0] =  "Domingo";
+  semana[1] = "Segunda-feira";
+  semana[2] = "Terça-feira";
+  semana[3] = "Quarta-feira";
+  semana[4] = "Quinta-feira";
+  semana[5] = "Sexta-feira";
+  semana[6] = "Sábado";
+  var n = semana[d.getDay()];
+  console.log(n);
 }

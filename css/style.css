@@ -45,7 +45,7 @@ body {
 /* Fim  do loader */
 
 #principal {
-	height: 100vh;
+	height: 100%;
 	padding-top: 20px;
 }
 /* Define o tamanho maximo da imagem principal */
@@ -92,8 +92,22 @@ body {
 	opacity: 0.8;
 }
 
-.compass{
+.compass {
 	max-width: 30px;
 	max-height: 30px;
 	float: right;
+}
+
+.dia-da-semana {
+	margin-right: 4px;
+	opacity: 0.8;
+}
+.dia-da-semana:last-of-type {
+	margin-right: 0px;
+	opacity: 0.8;
+}
+
+.dia-da-semana img{
+	max-width: 40px;
+	max-height: 40px;
 }

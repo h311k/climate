@@ -43,7 +43,6 @@ function getPrevisaoDoTempo(loader){
           previsaoSemana = data.data;
           result = $.grep(data.data, function(e){ return e.date_br == dia; });
           previsaoHoje = result[0];
-          //console.log(previsaoHoje);
           renderizaPrevisaoHoje();
           renderizaPrevisaoHoras();
           renderizaPrevisaoSemana();
@@ -99,7 +98,7 @@ function renderizaPrevisaoHoje() {
       $('body').addClass('ceu-limpo');
     }
 
-  } else if (hora<=18) {
+  } else if (hora<18) {
     $('#lide').text(previsaoHoje.text_icon.text.phrase.afternoon);
     $('#imagem-clima').addClass('afternoon');
     $('#imagem-clima').attr('src', './img/realistic/200px/'+previsaoHoje.text_icon.icon.afternoon+'.png');
@@ -110,7 +109,7 @@ function renderizaPrevisaoHoje() {
     } else if((previsaoHoje.text_icon.icon.afternoon.indexOf('3')>=0) || (previsaoHoje.text_icon.icon.afternoon.indexOf('4')>=0)) {
       $('#principal').addClass('chuva-leve');
       $('body').addClass('ceu-fechado');
-    } else if((previsaoHoje.text_icon.icon.afternoon.afternoon('5')>=0) || (previsaoHoje.text_icon.icon.afternoon.indexOf('6')>=0)) {
+    } else if((previsaoHoje.text_icon.icon.afternoon.indexOf('5')>=0) || (previsaoHoje.text_icon.icon.afternoon.indexOf('6')>=0)) {
       $('#principal').addClass('chuva-pesada');
       $('body').addClass('ceu-fechado');
     } else {
@@ -140,7 +139,6 @@ function renderizaPrevisaoHoje() {
 }
 
 function renderizaPrevisaoHoras() {
-  console.log(tempHoje[0]);
   for(i=0;i<=24;i++) {
       temperaturaHora = '<h4>'+tempHoje[hora].temperature.temperature+'°</h4>';
       iconeVento = '<img class="compass" src="img/icons/compass.svg" alt="'+tempHoje[hora].wind.directiondegrees+'deg"/>';
@@ -178,7 +176,7 @@ function renderizaPrevisaoHoras() {
 
 function renderizaPrevisaoSemana() {
   var d = new Date();
-  var semana = new Array(7);
+  semana = new Array(7);
   semana[0] =  "Domingo";
   semana[1] = "Segunda-feira";
   semana[2] = "Terça-feira";
@@ -186,6 +184,15 @@ function renderizaPrevisaoSemana() {
   semana[4] = "Quinta-feira";
   semana[5] = "Sexta-feira";
   semana[6] = "Sábado";
-  var n = semana[d.getDay()];
-  console.log(n);
+  j=d.getDay()+1;
+  var n = semana[j];
+  for(i=1;i<7;i++){
+    dia = '<div class="dia-semana"><h6>'+semana[j]+'<h6></div>';
+    imagem = '<div class="imagem-semana"><img class="imagem-dia-semana" src=./img/realistic/200px/'+previsaoSemana[i].text_icon.icon.day+'.png></img></div>';
+    temperatura = '<div class="temperatura-semana"><h6>'+previsaoSemana[i].temperature.max+'° '+previsaoSemana[i].temperature.min+'°</h6></div>';
+    linha = '<div class="dia-da-semana d-flex justify-content-between shadow p-3 mb-5 bg-white rounded col-md-2">'+dia + imagem + temperatura+'</div>';
+    $('.dias').append(linha);
+    console.log(previsaoSemana[i]);
+    if(j>=6){j=0;}else{j++;}//percorre o vetor dos dias da semana.
+  }
 }

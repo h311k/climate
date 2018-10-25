@@ -186,11 +186,11 @@ function renderizaPrevisaoSemana() {
   semana[6] = "Sábado";
   j=d.getDay()+1;
   var n = semana[j];
-  for(i=1;i<7;i++){
+  for(i=1;i<6;i++){
     dia = '<div class="dia-semana"><h6>'+semana[j]+'<h6></div>';
     imagem = '<div class="imagem-semana"><img class="imagem-dia-semana" src=./img/realistic/200px/'+previsaoSemana[i].text_icon.icon.day+'.png></img></div>';
     temperatura = '<div class="temperatura-semana"><h6>'+previsaoSemana[i].temperature.max+'° '+previsaoSemana[i].temperature.min+'°</h6></div>';
-    linha = '<div class="dia-da-semana d-flex justify-content-between shadow p-3 mb-5 bg-white rounded col-md-2">'+dia + imagem + temperatura+'</div>';
+    linha = '<div class="dia-da-semana d-flex justify-content-center middle shadow p-3 mb-5 bg-white rounded col-md-2">'+dia + imagem + temperatura+'</div>';
     $('.dias').append(linha);
     console.log(previsaoSemana[i]);
     if(j>=6){j=0;}else{j++;}//percorre o vetor dos dias da semana.

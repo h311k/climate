@@ -92,6 +92,10 @@ body {
 	opacity: 0.8;
 }
 
+.temperatura-hora {
+	cursor: grab;
+}
+
 .compass {
 	max-width: 30px;
 	max-height: 30px;
@@ -101,10 +105,18 @@ body {
 .dia-da-semana {
 	margin-right: 10px;
 	opacity: 0.8;
+	transition: transform 0.5s;
 }
 .dia-da-semana:last-of-type {
 	margin-right: 0px;
 	opacity: 0.8;
+}
+.dia-da-semana:hover {
+	-webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+	border-radius: 0%;
+	transition: transform 0.5s;
 }
 
 .dia-da-semana img{

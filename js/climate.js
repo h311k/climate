@@ -168,7 +168,7 @@ function renderizaPrevisaoHoras() {
             items:5,
             nav:false,
             loop:false,
-            dots:true
+            dots:false
         }
     }
   });
@@ -192,7 +192,6 @@ function renderizaPrevisaoSemana() {
     temperatura = '<div class="temperatura-semana"><h6>'+previsaoSemana[i].temperature.max+'° '+previsaoSemana[i].temperature.min+'°</h6></div>';
     linha = '<div class="dia-da-semana d-flex justify-content-center middle shadow p-3 mb-5 bg-white rounded col-md-2">'+dia + imagem + temperatura+'</div>';
     $('.dias').append(linha);
-    console.log(previsaoSemana[i]);
     if(j>=6){j=0;}else{j++;}//percorre o vetor dos dias da semana.
   }
 }
